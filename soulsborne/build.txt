@@ -1,0 +1,7 @@
+author = Soxar
+version = 0.1
+displayName = Soxar's First Mod
+hideCode = false
+hideResources = false
+includeSource = true
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*

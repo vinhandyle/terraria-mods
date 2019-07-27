@@ -1,0 +1,5 @@
+--Apocalypse(Spear)	||	High DPS & Lifesteal : High Neg Life Regen
+--Stratisformis(Bow)	||	High DPS & Speed : Signif Defense Reduction
+--Lament(Staff)		||	High DPS & Low Mana Cost : Neg Lifesteal
+--Cataclysm(Knives)	||	Massive DPS : Halve Max HP
+--Dark Guardian(Summon)	||	Massive DPS : Massively Reduce All Other Damage

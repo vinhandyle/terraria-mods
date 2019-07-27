@@ -1,0 +1,3 @@
+Hello! This is my first Terraria mod.
+I've tried to implement content from the Soulsborne and Kingdom Hearts series.
+Enjoy!

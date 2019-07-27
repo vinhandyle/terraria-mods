@@ -1,0 +1,3 @@
+author = Soxar
+version = 0.1
+displayName = SOXAR's Mod
