@@ -54,8 +54,6 @@ namespace SoxarsMod.Items.Weapons
 
         public override void HoldItem(Player player)
         {
-            player.GetModPlayer<MyModPlayer>().stratiEquipped = true;
-
             if (player.FindBuffIndex(mod.BuffType("ContrastBuff")) > 0)
             {
                 if (player.name != "Soxar") //Change to == later
