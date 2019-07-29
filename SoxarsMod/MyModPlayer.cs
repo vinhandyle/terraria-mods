@@ -28,8 +28,6 @@ namespace Terraria.ModLoader
         public bool prowessEquipped;
         public bool trueProwessEquipped;
 
-        public bool stratiEquipped;
-
         int tarot21Heal = 0;
 
         public override void ResetEffects()
@@ -111,58 +109,36 @@ namespace Terraria.ModLoader
             Random rnd = new Random();
             int dodgeChance = rnd.Next(0, 99);
 
-            //if (player.whoAmI == Main.myPlayer && this.stratiEquipped && ((!(this.prowessEquipped || this.trueProwessEquipped) && ((player.FindBuffIndex(mod.BuffType("StratiDodge")) >= 0 && dodgeChance < 12) || (player.FindBuffIndex(mod.BuffType("StratiDodgeX")) >= 0 && dodgeChance < 78))) || (this.prowessEquipped && player.FindBuffIndex(mod.BuffType("StratiDodge")) >= 0 && dodgeChance < 17) || (this.trueProwessEquipped && (player.FindBuffIndex(mod.BuffType("StratiDodgeX")) >= 0 && dodgeChance < 128))))
-            //{
-            //    player.immuneTime = 60;
-            //    if (player.longInvince)
-            //    {
-            //        player.immuneTime += 40;
-            //    }
-            //    for (int i = 0; i < 100; i++)
-            //    {
-            //        int num = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 31, 0f, 0f, 100, default(Color), 2f);
-            //        Dust expr_82_cp_0 = Main.dust[num];
-            //        expr_82_cp_0.position.X = expr_82_cp_0.position.X + (float)Main.rand.Next(-20, 21);
-            //        Dust expr_A9_cp_0 = Main.dust[num];
-            //        expr_A9_cp_0.position.Y = expr_A9_cp_0.position.Y + (float)Main.rand.Next(-20, 21);
-            //        Main.dust[num].velocity *= 0.4f;
-            //        Main.dust[num].scale *= 1f + (float)Main.rand.Next(40) * 0.01f;
-            //        if (Main.rand.Next(2) == 0)
-            //        {
-            //            Main.dust[num].scale *= 1f + (float)Main.rand.Next(40) * 0.01f;
-            //            Main.dust[num].noGravity = true;
-            //        }
-            //    }
-            //    return false;
-            //}
-            //else
-            //{
-            //    return true;
-            //}
-
-            if (player.whoAmI == Main.myPlayer && this.stratiEquipped && ((!(this.prowessEquipped || this.trueProwessEquipped) && ((player.FindBuffIndex(mod.BuffType("StratiDodge")) >= 0 && dodgeChance < 12) || (player.FindBuffIndex(mod.BuffType("StratiDodgeX")) >= 0 && dodgeChance < 78))) || (this.prowessEquipped && player.FindBuffIndex(mod.BuffType("StratiDodge")) >= 0 && dodgeChance < 17) || (this.trueProwessEquipped && (player.FindBuffIndex(mod.BuffType("StratiDodgeX")) >= 0 && dodgeChance < 128))))
+            if (this.prowessEquipped || this.trueProwessEquipped)
             {
-                player.immuneTime = 60;
-                if (player.longInvince)
+                if (player.whoAmI == Main.myPlayer && ((this.prowessEquipped && dodgeChance < 5) || (this.trueProwessEquipped && dodgeChance < 40)))
                 {
-                    player.immuneTime += 40;
-                }
-                for (int i = 0; i < 100; i++)
-                {
-                    int num = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 31, 0f, 0f, 100, default(Color), 2f);
-                    Dust expr_82_cp_0 = Main.dust[num];
-                    expr_82_cp_0.position.X = expr_82_cp_0.position.X + (float)Main.rand.Next(-20, 21);
-                    Dust expr_A9_cp_0 = Main.dust[num];
-                    expr_A9_cp_0.position.Y = expr_A9_cp_0.position.Y + (float)Main.rand.Next(-20, 21);
-                    Main.dust[num].velocity *= 0.4f;
-                    Main.dust[num].scale *= 1f + (float)Main.rand.Next(40) * 0.01f;
-                    if (Main.rand.Next(2) == 0)
+                    player.immuneTime = 60;
+                    if (player.longInvince)
                     {
-                        Main.dust[num].scale *= 1f + (float)Main.rand.Next(40) * 0.01f;
-                        Main.dust[num].noGravity = true;
+                        player.immuneTime += 40;
                     }
+                    for (int i = 0; i < 100; i++)
+                    {
+                        int num = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 31, 0f, 0f, 100, default(Color), 2f);
+                        Dust expr_82_cp_0 = Main.dust[num];
+                        expr_82_cp_0.position.X = expr_82_cp_0.position.X + (float)Main.rand.Next(-20, 21);
+                        Dust expr_A9_cp_0 = Main.dust[num];
+                        expr_A9_cp_0.position.Y = expr_A9_cp_0.position.Y + (float)Main.rand.Next(-20, 21);
+                        Main.dust[num].velocity *= 0.4f;
+                        Main.dust[num].scale *= 1f + (float)Main.rand.Next(40) * 0.01f;
+                        if (Main.rand.Next(2) == 0)
+                        {
+                            Main.dust[num].scale *= 1f + (float)Main.rand.Next(40) * 0.01f;
+                            Main.dust[num].noGravity = true;
+                        }
+                    }
+                    return false;
                 }
-                return false;
+                else
+                {
+                    return true;
+                }
             }
             else
             {
