@@ -24,33 +24,16 @@ namespace SoxarsMod
             {
                 Autoload = true,
                 AutoloadGores = true,
-                AutoloadSounds = true
+                AutoloadSounds = true,
+                AutoloadBackgrounds = true
             };
         }
 
-        public override void UpdateMusic(ref int music)
+        public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
-            if (Main.myPlayer != -1 && !Main.gameMenu)
+            if (Main.myPlayer != -1 && !Main.gameMenu && Main.LocalPlayer.active)
             {
-                int[] noOverride =
-                {
-                    MusicID.Boss1, MusicID.Boss2, MusicID.Boss3, MusicID.Boss4, MusicID.Boss5,
-                    MusicID.LunarBoss, MusicID.PumpkinMoon, MusicID.TheTowers, MusicID.FrostMoon, MusicID.GoblinInvasion,
-                    MusicID.Eclipse, MusicID.MartianMadness, MusicID.PirateInvasion,
-                    GetSoundSlot(SoundType.Music, "Sounds/Music/Ornstein&Smough")
-                };
-
-                int m = music;
-                bool playMusic =
-                    !noOverride.Any(song => song == m)
-                    || !Main.npc.Any(npc => npc.boss);
-
-                Player player = Main.LocalPlayer;
-
-                if (player.active && NPC.AnyNPCs(NPCType("Ornstein")))
-                {
-                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/Ornstein&Smough");
-                }
+                
             }
         }
     }
