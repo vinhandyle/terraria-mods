@@ -1,2 +1,3 @@
-# test-project
+# terraria-mods
+
 These are my Terraria mods.
