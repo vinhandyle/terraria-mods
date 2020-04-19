@@ -21,7 +21,7 @@ namespace SoxarsMod.Items.Accessories.DevAccessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Contrast");
-            Tooltip.SetDefault("A beautiful necklace which distinguishes its wearer from all others \nNegates the curses of the mythical weapons \nMythical weapons grant additional powers to the One");
+            Tooltip.SetDefault("Cursed necklace that either homogenizes or distinguishes one's self.");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 14));
         }
 
@@ -36,7 +36,7 @@ namespace SoxarsMod.Items.Accessories.DevAccessory
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.AddBuff(mod.BuffType("ContrastBuff"), 2);
+            player.AddBuff(mod.BuffType("ContrastBuff"), 2); //add stuff
         }
     }
 }

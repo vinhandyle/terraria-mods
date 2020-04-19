@@ -24,7 +24,7 @@ namespace SoxarsMod.Items.Weapons
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 1165;
+			item.damage = 1025; // (neutralMax + fireMax + neutralMin + fire Min) / 2
             item.useStyle = 5;
             item.useAnimation = 20; 
             item.useTime = 20;

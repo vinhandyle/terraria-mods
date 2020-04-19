@@ -98,7 +98,7 @@ namespace SoxarsMod.Projectiles
         {
             Player projOwner = Main.player[projectile.owner];
             Random rnd = new Random();
-            int healAmount = rnd.Next(7,31);
+            int healAmount = rnd.Next(10,43); // min = 500hp / (10,000hp / 200ls) max = 500hp / (10,000hp / 866ls)
             int healChance = rnd.Next(0,99);
             if (healChance < 50)
             {

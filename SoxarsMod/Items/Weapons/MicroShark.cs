@@ -62,12 +62,12 @@ namespace SoxarsMod.Items.Weapons
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 
-            ModRecipe recipe1 = new ModRecipe(mod);
-            recipe1.AddIngredient(ItemID.Goldfish, 1);
-            recipe1.AddIngredient(ItemID.LeadBar, 5);
-            recipe1.AddTile(ItemID.LeadAnvil);
-            recipe1.SetResult(this);
-            recipe1.AddRecipe();
+            //ModRecipe recipe1 = new ModRecipe(mod);
+            //recipe1.AddIngredient(ItemID.Goldfish, 1);
+            //recipe1.AddIngredient(ItemID.LeadBar, 5);
+            //recipe1.AddTile(ItemID.LeadAnvil);
+            //recipe1.SetResult(this);
+            //recipe1.AddRecipe();
         }
 	}
 }

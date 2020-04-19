@@ -21,7 +21,7 @@ namespace SoxarsMod.Items.Accessories.DevAccessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Intensity");
-            Tooltip.SetDefault("A powerful ring which elevates its wearer's strength above all others \nIncreases all damage by 25% \nGrants immeasurable power to the One");
+            Tooltip.SetDefault("Cursed ring that either dilutes or focuses one's strength beyond recognition.");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 14));
         }
 
@@ -38,19 +38,19 @@ namespace SoxarsMod.Items.Accessories.DevAccessory
         {
             if (player.name != "Soxar")
             {
-                player.magicDamage += 1f;
-                player.meleeDamage += 1f;
-                player.minionDamage += 1f;
-                player.rangedDamage += 1f;
-                player.thrownDamage += 1f;
+                player.magicDamage += 9f;
+                player.meleeDamage += 9f;
+                player.minionDamage += 9f;
+                player.rangedDamage += 9f;
+                player.thrownDamage += 9f;
             }
             else
             {
-                player.magicDamage += 0.25f;
-                player.meleeDamage += 0.25f;
-                player.minionDamage += 0.25f;
-                player.rangedDamage += 0.25f;
-                player.thrownDamage += 0.25f;
+                player.magicDamage -= 0.9f;
+                player.meleeDamage -= 0.9f;
+                player.minionDamage -= 0.9f;
+                player.rangedDamage -= 0.9f;
+                player.thrownDamage -= 0.9f;
             }
         }
     }

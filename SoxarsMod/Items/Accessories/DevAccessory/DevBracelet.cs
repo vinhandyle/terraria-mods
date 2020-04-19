@@ -21,7 +21,7 @@ namespace SoxarsMod.Items.Accessories.DevAccessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Prowess");
-            Tooltip.SetDefault("A mysterious bracelet which elevates its wearer's skills above all others \nProvides a multitude of power-ups  \nThese powers are doubled for the One");
+            Tooltip.SetDefault("Cursed bracelet that either diminishes or enhances one's abilities");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 14));
         }
 
@@ -38,7 +38,7 @@ namespace SoxarsMod.Items.Accessories.DevAccessory
         {
             if (player.name != "Soxar")
             {
-
+                //buff or nerf idk
                 //str
                 player.magicDamage += 0.5f;
                 player.meleeDamage += 0.5f;
