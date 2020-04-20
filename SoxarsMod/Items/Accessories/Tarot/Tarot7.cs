@@ -37,25 +37,25 @@ namespace SoxarsMod.Items.Accessories.Tarot
             player.meleeSpeed = 1.1f;
         }
 
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("BlankCard"));
-            recipe.AddIngredient(ItemID.SilverBar, 5);
-            recipe.AddIngredient(ItemID.JungleSpores, 6);
-            recipe.AddIngredient(ItemID.Vine, 12);
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+        //public override void AddRecipes()
+        //{
+        //    ModRecipe recipe = new ModRecipe(mod);
+        //    recipe.AddIngredient(mod.ItemType("BlankCard"));
+        //    recipe.AddIngredient(ItemID.SilverBar, 5);
+        //    recipe.AddIngredient(ItemID.JungleSpores, 6);
+        //    recipe.AddIngredient(ItemID.Vine, 12);
+        //    recipe.AddTile(TileID.CrystalBall);
+        //    recipe.SetResult(this);
+        //    recipe.AddRecipe();
 
-            ModRecipe recipe1 = new ModRecipe(mod);
-            recipe1.AddIngredient(mod.ItemType("BlankCard"));
-            recipe1.AddIngredient(ItemID.TungstenBar, 5);
-            recipe1.AddIngredient(ItemID.JungleSpores, 6);
-            recipe1.AddIngredient(ItemID.Vine, 12);
-            recipe1.AddTile(TileID.CrystalBall);
-            recipe1.SetResult(this);
-            recipe1.AddRecipe();
-        }
+        //    ModRecipe recipe1 = new ModRecipe(mod);
+        //    recipe1.AddIngredient(mod.ItemType("BlankCard"));
+        //    recipe1.AddIngredient(ItemID.TungstenBar, 5);
+        //    recipe1.AddIngredient(ItemID.JungleSpores, 6);
+        //    recipe1.AddIngredient(ItemID.Vine, 12);
+        //    recipe1.AddTile(TileID.CrystalBall);
+        //    recipe1.SetResult(this);
+        //    recipe1.AddRecipe();
+        //}
     }
 }

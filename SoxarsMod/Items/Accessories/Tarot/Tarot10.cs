@@ -37,14 +37,14 @@ namespace SoxarsMod.Items.Accessories.Tarot
             player.maxRunSpeed = 1.25f;
         }
 
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("BlankCard"));
-            recipe.AddIngredient(ItemID.HermesBoots, 1);
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
+        //public override void AddRecipes()
+        //{
+        //    ModRecipe recipe = new ModRecipe(mod);
+        //    recipe.AddIngredient(mod.ItemType("BlankCard"));
+        //    recipe.AddIngredient(ItemID.HermesBoots, 1);
+        //    recipe.AddTile(TileID.CrystalBall);
+        //    recipe.SetResult(this);
+        //    recipe.AddRecipe();
+        //}
     }
 }

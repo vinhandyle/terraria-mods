@@ -77,18 +77,18 @@ namespace SoxarsMod.Items.Accessories.Tarot
             //The World
         }
 
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("BlankCard"));
-            recipe.AddIngredient(null, "Tarot13", 1);
-            recipe.AddIngredient(null, "Tarot21", 1);
-            //recipe.AddIngredient(ItemID.HeroCard, 1); 6
-            //recipe.AddIngredient(ItemID.ColorCard, 1); 4
-            //recipe.AddIngredient(ItemID.PureCard, 1); 10
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
+        //public override void AddRecipes()
+        //{
+        //    ModRecipe recipe = new ModRecipe(mod);
+        //    recipe.AddIngredient(mod.ItemType("BlankCard"));
+        //    recipe.AddIngredient(null, "Tarot13", 1);
+        //    recipe.AddIngredient(null, "Tarot21", 1);
+        //    //recipe.AddIngredient(ItemID.HeroCard, 1); 6
+        //    //recipe.AddIngredient(ItemID.ColorCard, 1); 4
+        //    //recipe.AddIngredient(ItemID.PureCard, 1); 10
+        //    recipe.AddTile(TileID.CrystalBall);
+        //    recipe.SetResult(this);
+        //    recipe.AddRecipe();
+        //}
     }
 }

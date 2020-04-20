@@ -37,15 +37,15 @@ namespace SoxarsMod.Items.Accessories.Tarot
             player.meleeDamage = 1.1f;
         }
 
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("BlankCard"));
-            recipe.AddIngredient(ItemID.SoulofMight, 6);
-            recipe.AddIngredient(ItemID.Bone, 75);
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
+        //public override void AddRecipes()
+        //{
+        //    ModRecipe recipe = new ModRecipe(mod);
+        //    recipe.AddIngredient(mod.ItemType("BlankCard"));
+        //    recipe.AddIngredient(ItemID.SoulofMight, 6);
+        //    recipe.AddIngredient(ItemID.Bone, 75);
+        //    recipe.AddTile(TileID.CrystalBall);
+        //    recipe.SetResult(this);
+        //    recipe.AddRecipe();
+        //}
     }
 }

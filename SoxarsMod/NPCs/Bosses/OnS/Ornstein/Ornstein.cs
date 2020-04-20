@@ -32,16 +32,6 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
         private double superThreshold = 0.25;
 
         //Bool variables
-        private bool dash = false;
-        private bool jump = false;
-        private bool backStep = false;
-        private bool drop = false;
-        private bool dashL = false;
-        private bool boltA = false;
-        private bool boltB = false;
-        private bool jumpA = false;
-        private bool stormMini = false;
-        private bool storm = false;
         private bool super = false;
 
         //String variables
@@ -54,22 +44,22 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
 
         public override bool Autoload(ref string name)
         {
-            name = "Dragonslayer Ornstein";
+            name = "Dragonslayer Spear";
             mod.AddBossHeadTexture(superOrnHead);
             return base.Autoload(ref name);
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dragonslayer Ornstein");
-            Main.npcFrameCount[npc.type] = 2;
+            DisplayName.SetDefault("Dragonslayer Spear");
+            Main.npcFrameCount[npc.type] = 1;
         }
 
         public override void SetDefaults()
         {
             npc.aiStyle = -1; 
-            npc.width = 30;
-            npc.height = 30;
+            npc.width = 244;
+            npc.height = 42;
             npc.damage = 142; //base 142
             npc.defense = 35; //base 349
             npc.lifeMax = 1348903; //base 1642 
@@ -78,7 +68,7 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
             animationType = 0;
             npc.knockBackResist = 0f;
             npc.noTileCollide = false;
-            npc.noGravity = false;
+            npc.noGravity = true;
             npc.boss = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Ornstein&Smough");
             npc.buffImmune[30] = true;
@@ -120,7 +110,7 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
 
             if (aiSecond == 0) //Opening Move
             {
-                dashL = true;
+                
             }
 
             aiSecond++;
@@ -139,60 +129,6 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
             {
                 npc.damage = (int)(npc.damage * 1.408); 
                 npc.defense = (int)(npc.defense * 1.815); 
-            }
-
-            //Mobility
-            if (dash == true) //stops for split sec then dashes in a straight line towards player
-            {
-                dash = false;
-            }
-
-            if (jump == true) //jumps in an arc towards player
-            {
-                jump = false;
-            }
-
-            if (backStep == true) //hops back behind Smough
-            {
-                //backstep => boltB
-                boltB = true;
-                backStep = false;
-            }
-
-            if (drop == true) //drops off things, like platforms, towards player
-            {
-                drop = false;
-            }
-
-            //Attacks
-            if (dashL = true) //stops for a sec then dashes very quickly in a straight line towards player
-            {
-                dashL = false;
-            }
-
-            if (jumpA == true) //while midair spin towards player
-            {
-                jumpA = false;
-            }
-
-            if (boltA == true) //stops in place and creates 4 balls from its center and traveling out clockwise like shuriken
-            {
-                boltA = false;
-            }
-
-            if (boltB == true) //stops in place and shoots a ball towards player that bounces
-            {
-                boltB = false;
-            }
-
-            if (stormMini == true) //stops for split sec then summons 3 lightning bolts from above from it towards player
-            {
-                stormMini = false;
-            }
-
-            if (storm == true) //summons lightning from above moving from player side to its side, goes across one screen length 
-            {
-                storm = false;
             }
         }
 

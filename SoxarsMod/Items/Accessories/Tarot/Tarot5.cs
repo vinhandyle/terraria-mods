@@ -37,15 +37,15 @@ namespace SoxarsMod.Items.Accessories.Tarot
             player.thrownDamage = 1.1f;
         }
 
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("BlankCard"));
-            recipe.AddIngredient(ItemID.FossilOre, 20);
-            recipe.AddIngredient(ItemID.Emerald, 20);
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
+        //public override void AddRecipes()
+        //{
+        //    ModRecipe recipe = new ModRecipe(mod);
+        //    recipe.AddIngredient(mod.ItemType("BlankCard"));
+        //    recipe.AddIngredient(ItemID.FossilOre, 20);
+        //    recipe.AddIngredient(ItemID.Emerald, 20);
+        //    recipe.AddTile(TileID.CrystalBall);
+        //    recipe.SetResult(this);
+        //    recipe.AddRecipe();
+        //}
     }
 }

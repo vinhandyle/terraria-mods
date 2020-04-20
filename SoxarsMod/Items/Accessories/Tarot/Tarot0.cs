@@ -44,17 +44,17 @@ namespace SoxarsMod.Items.Accessories.Tarot
             }
         }
 
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("BlankCard"));
-            recipe.AddIngredient(ItemID.BandofStarpower, 1);
-            recipe.AddIngredient(ItemID.AntlionMandible, 5);
-            recipe.AddIngredient(ItemID.Cactus, 20);
-            recipe.AddIngredient(ItemID.SandBlock, 100);
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
+        //public override void AddRecipes()
+        //{
+        //    ModRecipe recipe = new ModRecipe(mod);
+        //    recipe.AddIngredient(mod.ItemType("BlankCard"));
+        //    recipe.AddIngredient(ItemID.BandofStarpower, 1);
+        //    recipe.AddIngredient(ItemID.AntlionMandible, 5);
+        //    recipe.AddIngredient(ItemID.Cactus, 20);
+        //    recipe.AddIngredient(ItemID.SandBlock, 100);
+        //    recipe.AddTile(TileID.CrystalBall);
+        //    recipe.SetResult(this);
+        //    recipe.AddRecipe();
+        //}
     }
 }

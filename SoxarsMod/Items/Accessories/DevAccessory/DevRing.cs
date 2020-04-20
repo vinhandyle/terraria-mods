@@ -21,7 +21,7 @@ namespace SoxarsMod.Items.Accessories.DevAccessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Intensity");
-            Tooltip.SetDefault("Cursed ring that either dilutes or focuses one's strength beyond recognition.");
+            Tooltip.SetDefault("Mysterious \nA bottomless well, what will you find?");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 14));
         }
 

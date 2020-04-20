@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Terraria;
+using Terraria.Chat;
 using Terraria.GameContent.Dyes;
 using Terraria.GameContent.UI;
 using Terraria.Graphics.Effects;
@@ -52,7 +53,7 @@ namespace SoxarsMod.Projectiles
                 projectile.alpha += 1;
             }
 
-            //Kill proj when invisible, proj lasts 8.5 sec
+            //Kill proj when invisible, proj lasts ~8.25 sec
             if (projectile.alpha >= 255)
             {
                 projectile.Kill();
@@ -73,31 +74,28 @@ namespace SoxarsMod.Projectiles
         {
             Player projOwner = Main.player[projectile.owner];
 
-            if (projectile.velocity.X < projectile.velocity.Y)
-            { //horizontal spread
-                if (projOwner.position.Y < projectile.position.Y)
-                { //ground flame
-                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y + 15, 5, 0, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
-                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y + 15, -5, 0, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
-                }
-                else if (projOwner.position.Y > projectile.position.Y)
-                { //flame from above
-                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 5, 0, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
-                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, -5, 0, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
-                }
+            if (projectile.oldVelocity.X > projectile.velocity.X)
+            { //spreads along right wall
+                Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 5, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
+                Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, -5, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
             }
-            else if (projectile.velocity.X > projectile.velocity.Y)
-            { //vertical spread
-                if (projOwner.position.X < projectile.position.X)
-                { //right-facing
-                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 5, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
-                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y , 0, -5, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
-                }
-                else if (projOwner.position.X < projectile.position.X)
-                { //left-facing
-                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 5, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
-                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, -5, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
-                }
+
+            if (projectile.oldVelocity.X < projectile.velocity.X)
+            { //spreads along left wall
+                Projectile.NewProjectile(projectile.position.X + 15, projectile.position.Y, 0, 5, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
+                Projectile.NewProjectile(projectile.position.X + 15, projectile.position.Y, 0, -5, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
+            }
+
+            if (projectile.oldVelocity.Y > projectile.velocity.Y)
+            { //spreads along floor
+                Projectile.NewProjectile(projectile.position.X, projectile.position.Y + 15, 5, 0, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
+                Projectile.NewProjectile(projectile.position.X, projectile.position.Y + 15, -5, 0, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
+            }
+
+            if (projectile.oldVelocity.Y < projectile.velocity.Y)
+            { //spreads along ceiling
+                Projectile.NewProjectile(projectile.position.X, projectile.position.Y + 15, 5, 0, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
+                Projectile.NewProjectile(projectile.position.X, projectile.position.Y + 15, -5, 0, mod.ProjectileType("groundFlame"), (int)(projectile.damage * 0.5), projectile.knockBack, Main.myPlayer);
             }
 
             return true;

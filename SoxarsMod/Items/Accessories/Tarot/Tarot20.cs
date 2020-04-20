@@ -37,16 +37,16 @@ namespace SoxarsMod.Items.Accessories.Tarot
             player.maxMinions += 1;
         }
 
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("BlankCard"));
-            recipe.AddIngredient(ItemID.TreeNymphButterfly, 3);
-            recipe.AddIngredient(ItemID.Buggy, 4);
-            recipe.AddIngredient(ItemID.EnchantedNightcrawler, 7);
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
+        //public override void AddRecipes()
+        //{
+        //    ModRecipe recipe = new ModRecipe(mod);
+        //    recipe.AddIngredient(mod.ItemType("BlankCard"));
+        //    recipe.AddIngredient(ItemID.TreeNymphButterfly, 3);
+        //    recipe.AddIngredient(ItemID.Buggy, 4);
+        //    recipe.AddIngredient(ItemID.EnchantedNightcrawler, 7);
+        //    recipe.AddTile(TileID.CrystalBall);
+        //    recipe.SetResult(this);
+        //    recipe.AddRecipe();
+        //}
     }
 }

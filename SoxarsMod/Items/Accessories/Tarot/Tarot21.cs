@@ -37,15 +37,15 @@ namespace SoxarsMod.Items.Accessories.Tarot
             player.GetModPlayer<MyModPlayer>().tarot21Equipped = true;
         }
 
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("BlankCard"));
-            recipe.AddIngredient(ItemID.RodofDiscord, 1);
-            //recipe.AddIngredient(mod.ItemType(DIO));
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
+        //public override void AddRecipes()
+        //{
+        //    ModRecipe recipe = new ModRecipe(mod);
+        //    recipe.AddIngredient(mod.ItemType("BlankCard"));
+        //    recipe.AddIngredient(ItemID.RodofDiscord, 1);
+        //    //recipe.AddIngredient(mod.ItemType(DIO));
+        //    recipe.AddTile(TileID.CrystalBall);
+        //    recipe.SetResult(this);
+        //    recipe.AddRecipe();
+        //}
     }
 }

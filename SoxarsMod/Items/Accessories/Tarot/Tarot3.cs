@@ -37,23 +37,23 @@ namespace SoxarsMod.Items.Accessories.Tarot
             player.minionDamage = 1.1f;
         }
 
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("BlankCard"));
-            recipe.AddIngredient(ItemID.CrimtaneBar, 5);
-            recipe.AddIngredient(ItemID.CrimstoneBlock, 30);
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+        //public override void AddRecipes()
+        //{
+        //    ModRecipe recipe = new ModRecipe(mod);
+        //    recipe.AddIngredient(mod.ItemType("BlankCard"));
+        //    recipe.AddIngredient(ItemID.CrimtaneBar, 5);
+        //    recipe.AddIngredient(ItemID.CrimstoneBlock, 30);
+        //    recipe.AddTile(TileID.CrystalBall);
+        //    recipe.SetResult(this);
+        //    recipe.AddRecipe();
 
-            ModRecipe recipe1 = new ModRecipe(mod);
-            recipe1.AddIngredient(mod.ItemType("BlankCard"));
-            recipe1.AddIngredient(ItemID.DemoniteBar, 5);
-            recipe1.AddIngredient(ItemID.EbonstoneBlock, 30);
-            recipe1.AddTile(TileID.CrystalBall);
-            recipe1.SetResult(this);
-            recipe1.AddRecipe();
-        }
+        //    ModRecipe recipe1 = new ModRecipe(mod);
+        //    recipe1.AddIngredient(mod.ItemType("BlankCard"));
+        //    recipe1.AddIngredient(ItemID.DemoniteBar, 5);
+        //    recipe1.AddIngredient(ItemID.EbonstoneBlock, 30);
+        //    recipe1.AddTile(TileID.CrystalBall);
+        //    recipe1.SetResult(this);
+        //    recipe1.AddRecipe();
+        //}
     }
 }

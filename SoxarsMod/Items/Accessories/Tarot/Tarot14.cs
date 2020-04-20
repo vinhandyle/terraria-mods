@@ -37,16 +37,16 @@ namespace SoxarsMod.Items.Accessories.Tarot
             player.thorns = 0.5f;
         }
 
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("BlankCard"));
-            recipe.AddIngredient(ItemID.ThornsPotion, 5);
-            recipe.AddIngredient(ItemID.Stinger, 10);
-            recipe.AddIngredient(ItemID.Cactus, 15);
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
+        //public override void AddRecipes()
+        //{
+        //    ModRecipe recipe = new ModRecipe(mod);
+        //    recipe.AddIngredient(mod.ItemType("BlankCard"));
+        //    recipe.AddIngredient(ItemID.ThornsPotion, 5);
+        //    recipe.AddIngredient(ItemID.Stinger, 10);
+        //    recipe.AddIngredient(ItemID.Cactus, 15);
+        //    recipe.AddTile(TileID.CrystalBall);
+        //    recipe.SetResult(this);
+        //    recipe.AddRecipe();
+        //}
     }
 }

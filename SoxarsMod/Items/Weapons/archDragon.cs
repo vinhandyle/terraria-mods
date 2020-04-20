@@ -30,6 +30,7 @@ namespace SoxarsMod.Items.Weapons
             item.useAnimation = 8;  
             item.shootSpeed = 8f; //
 			item.knockBack = 1; //
+            item.scale = 2f;
             item.width = 148; 
             item.height = 96; 
             item.rare = -11; 
@@ -103,7 +104,7 @@ namespace SoxarsMod.Items.Weapons
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-50, -10);
+            return new Vector2(-25, -10);
         }
 
         public override void AddRecipes()

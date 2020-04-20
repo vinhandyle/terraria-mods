@@ -19,11 +19,10 @@ namespace SoxarsMod.Projectiles
     public class groundFlame : ModProjectile
     {
         private int aiSecond = 0;
-        private string state;
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Flaming Pillar");
+            DisplayName.SetDefault("True Flame");
             Main.projFrames[projectile.type] = 4;
         }
 
@@ -50,15 +49,16 @@ namespace SoxarsMod.Projectiles
             //Becomes more transparent every tick
             if (aiSecond % 1 == 0)
             {
-                projectile.alpha += 1;
+                projectile.alpha += 2;
             }
 
-            //Kill proj when invisible, proj lasts 255 ticks or 4.25 sec
+            //Kill proj when invisible, proj lasts 255 ticks or 2.15 sec
             if (projectile.alpha >= 255)
             {
                 projectile.Kill();
             }
 
+            //Slows down proj
             if (aiSecond % 30 == 0 && aiSecond > 0)
             {
                 if (projectile.velocity.X > 0)

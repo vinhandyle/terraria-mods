@@ -21,7 +21,7 @@ namespace SoxarsMod.Items.Accessories.DevAccessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Contrast");
-            Tooltip.SetDefault("Cursed necklace that either homogenizes or distinguishes one's self.");
+            Tooltip.SetDefault("Alluring \nAll seek light, yet none can become the source");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 14));
         }
 

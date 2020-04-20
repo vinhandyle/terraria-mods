@@ -21,7 +21,7 @@ namespace SoxarsMod.Items.Accessories.DevAccessory
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Prowess");
-            Tooltip.SetDefault("Cursed bracelet that either diminishes or enhances one's abilities");
+            Tooltip.SetDefault("Cursed \nThe dull sharpen, the sharp break");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 14));
         }
 
