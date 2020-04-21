@@ -17,10 +17,10 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.UI;
 using Terraria.Utilities;
 
-namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
+namespace SoxarsMod.NPCs.Bosses.OnS.Smough.Smough
 {
     [AutoloadBossHead]
-    public class Ornstein : ModNPC
+    public class Smough : ModNPC
     {
         //Ai Slots
         private const int AI_State_Slot = 0;
@@ -28,11 +28,9 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
 
         //Ai States
         private const int State_Follow = 0;
-        private const int State_Turret = 1;
+        private const int State_Spin = 1;
         private const int State_Charge = 2;
-        private const int State_Storm = 3;
-        private const int State_Fade_Attack_1 = 4;
-        private const int State_Fade_Attack_2 = 5;
+        private const int State_Swing = 3;
 
         //Filling Ai Slots
         public float AI_State
@@ -52,34 +50,34 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
         private double superThreshold = 0.25;
         private bool super = false;
 
-        public const string superOrnHead = "SoxarsMod/NPCs/Bosses/OnS/Ornstein/Ornstein_Head_Boss_Super";
+        public const string superSmoHead = "SoxarsMod/NPCs/Bosses/OnS/Smough/Smough_Head_Boss_Super";
 
         public override string Texture
         {
-            get { return "SoxarsMod/NPCs/Bosses/OnS/Ornstein/Ornstein"; }
+            get { return "SoxarsMod/NPCs/Bosses/OnS/Smough/Smough"; }
         }
 
         public override bool Autoload(ref string name)
         {
-            name = "Dragonslayer Spear";
-            mod.AddBossHeadTexture(superOrnHead);
+            name = "Executioner's Hammer";
+            mod.AddBossHeadTexture(superSmoHead);
             return base.Autoload(ref name);
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dragonslayer Spear");
+            DisplayName.SetDefault("Executioner's Hammer");
             Main.npcFrameCount[npc.type] = 1;
         }
 
         public override void SetDefaults()
         {
             npc.aiStyle = -1; 
-            npc.width = 244;
-            npc.height = 42;
-            npc.damage = 142; //base 142
+            npc.width = 142;
+            npc.height = 88;
+            npc.damage = 450; //base 450
             npc.defense = 35; //base 349
-            npc.lifeMax = 1348903; //base 1642 
+            npc.lifeMax = 4128501; //base 2873 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             animationType = 0;
@@ -111,7 +109,7 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
             }
 
             //Super Form
-            if (SoxarsModWorld.DownedSmough_2 == true)
+            if (SoxarsModWorld.DownedOrnstein_2 == true)
             {
                 super = true;
             }
@@ -139,7 +137,7 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
         {
             if (super == true)
             {
-                index = ModContent.GetModBossHeadSlot(superOrnHead);
+                index = ModContent.GetModBossHeadSlot(superSmoHead);
             }
         }
 
@@ -151,16 +149,16 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
 
         public override void NPCLoot()
         {
-            if (SoxarsModWorld.DownedSmough_2 == true)
+            if (SoxarsModWorld.DownedOrnstein_2 == true)
             { //Killed Ornstein last
                 SoxarsModWorld.OnS_Alive = false;
-                if (SoxarsModWorld.DownedOrnstein_1 == true)
+                if (SoxarsModWorld.DownedSmough_1 == true)
                 { //killed OnS 2+ times
 
                 }
             }
-            SoxarsModWorld.DownedOrnstein_1 = true;
-            SoxarsModWorld.DownedOrnstein_2 = true;
+            SoxarsModWorld.DownedSmough_1 = true;
+            SoxarsModWorld.DownedSmough_2 = true;
         }
     }
 }
