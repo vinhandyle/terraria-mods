@@ -20,16 +20,15 @@ namespace SoxarsMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Chaos Sphere");
-            ProjectileID.Sets.Homing[projectile.type] = true;
+            DisplayName.SetDefault("Hell Blaze");
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 40;
-            projectile.height = 40;
-            projectile.aiStyle = 1;
-            projectile.penetrate = 1;
+            projectile.width = 150;
+            projectile.height = 150;
+            projectile.aiStyle = 50;
+            projectile.penetrate = -1;
             projectile.alpha = 0;
             projectile.timeLeft = 600;
             projectile.light = 1f;
@@ -44,16 +43,16 @@ namespace SoxarsMod.Projectiles
 
         public override void AI()
         {
-            projectile.type = 467;
+            projectile.type = 296;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             Player projOwner = Main.player[projectile.owner];
             Random rnd = new Random();
-            int healAmount = rnd.Next(10, 43); // min = 500hp / (10,000hp / 200ls) max = 500hp / (10,000hp / 866ls)
+            int healAmount = rnd.Next(1, 4);
             int healChance = rnd.Next(0, 99);
-            if (healChance < 79)
+            if (healChance < 24)
             {
                 projOwner.statLife += healAmount;
                 projOwner.HealEffect(healAmount, true);

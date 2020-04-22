@@ -34,7 +34,7 @@ namespace SoxarsMod.Items.Accessories.Tarot
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<MyModPlayer>().tarotCardsEquipped = true;
+            player.GetModPlayer<SoxarsModPlayer>().tarotCardsEquipped = true;
 
             if (player.ZoneDesert == true)
             {

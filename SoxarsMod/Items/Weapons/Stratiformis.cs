@@ -20,7 +20,7 @@ namespace SoxarsMod.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Stratiformis");
-			Tooltip.SetDefault("An excellently crafted bow from a distant land \nAllows its wielder to command the winds");
+			Tooltip.SetDefault("An excellently crafted bow from a distant land \nAllows its wielder to command the winds \nBe wary when using bursts of speed");
 		}
 		public override void SetDefaults()
 		{
@@ -54,22 +54,7 @@ namespace SoxarsMod.Items.Weapons
 
         public override void HoldItem(Player player)
         {
-            if (player.FindBuffIndex(mod.BuffType("ContrastBuff")) > 0)
-            {
-                if (player.name != "Soxar") //Change to == later
-                {
-                    player.AddBuff(mod.BuffType("StratiDodgeX"), 1);
-                    player.statDefense *= 2;
-                }
-            }
-            else
-            {
-                if (player.name != "Soxar")
-                {
-                    player.AddBuff(mod.BuffType("StratiDodge"), 1);
-                    player.statDefense /= 2;
-                }
-            }
+            player.AddBuff(mod.BuffType("StratiBuff"), 1);
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

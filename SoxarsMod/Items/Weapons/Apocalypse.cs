@@ -53,8 +53,7 @@ namespace SoxarsMod.Items.Weapons
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX / 2, speedY / 2, mod.ProjectileType("ApocProjectile2"), damage * 2, knockBack, player.whoAmI);
-            Projectile.NewProjectile(position.X, position.Y, speedX * 5, speedY * 5, mod.ProjectileType("ApocProjectile3"), damage, knockBack, player.whoAmI);
+            Projectile.NewProjectile(position.X, position.Y, speedX * 5, speedY * 5, mod.ProjectileType("ApocProjectile2"), damage, knockBack, player.whoAmI);
             Projectile.NewProjectile(position.X, position.Y, speedX * 4, speedY * 4, 696, damage * 5, knockBack, player.whoAmI);
             return true;
         }

@@ -34,7 +34,7 @@ namespace SoxarsMod.Items.Accessories.Tarot
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.GetModPlayer<MyModPlayer>().tarotCardsEquipped == false)
+            if (player.GetModPlayer<SoxarsModPlayer>().tarotCardsEquipped == false)
             {
                 player.potionDelayTime -= 900;
             }
