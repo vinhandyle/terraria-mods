@@ -29,6 +29,35 @@ namespace SoxarsMod
             };
         }
 
+        public override void AddRecipeGroups()
+        {
+            RecipeGroup hardmodeBar1 = new RecipeGroup(() => "Cobalt or Palladium Bars", new int[]
+                {
+                    ItemID.CobaltBar,
+                    ItemID.PalladiumBar
+                });
+            RecipeGroup.RegisterGroup("SoxarsMod:hardmodeBar1", hardmodeBar1);
+
+            RecipeGroup hardmodeBar2 = new RecipeGroup(() => "Mythril or Orichalcum Bars", new int[]
+                {
+                    ItemID.MythrilBar,
+                    ItemID.OrichalcumBar
+                });
+            RecipeGroup.RegisterGroup("SoxarsMod:hardmodeBar2", hardmodeBar2);
+
+            RecipeGroup hardmodeBar3 = new RecipeGroup(() => "Adamantite or Titanium Bars", new int[]
+                {
+                    ItemID.AdamantiteBar,
+                    ItemID.TitaniumBar
+                });
+            RecipeGroup.RegisterGroup("SoxarsMod:hardmodeBar3", hardmodeBar3);
+        }
+
+        public override void Unload()
+        {
+
+        }
+
         public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
             if (Main.myPlayer != -1 && !Main.gameMenu && Main.LocalPlayer.active)

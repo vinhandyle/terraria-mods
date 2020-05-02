@@ -101,6 +101,7 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
 
         public override void AI()
         {
+            //Targeting Player
             npc.TargetClosest(true);
             npc.spriteDirection = npc.direction;
             Player player = Main.player[npc.target];
@@ -108,6 +109,12 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
             {
                 npc.TargetClosest(false);
                 npc.active = false;
+            }
+
+            //Despawn
+            if (npc.active == false)
+            {
+                SoxarsModWorld.DownedOrnstein_2 = true;
             }
 
             //Super Form
@@ -125,13 +132,20 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
             //Begin with charging attack(s)
             if (AI_Timer == 0)
             {
-                AI_State = State_Charge;
+                AI_State = State_Follow;
             }
 
             //Follows the player but stops if too close 
             if (AI_State == State_Follow)
             {
+                npc.position.X = player.position.X;
+                npc.position.Y = player.position.Y - 50;
+            }
 
+            //Performs a series of charges towards player
+            if (AI_State == State_Charge)
+            {
+                AI_State = State_Follow;
             }
         }
 

@@ -99,6 +99,7 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Smough.Smough
 
         public override void AI()
         {
+            //Targeting Player
             npc.TargetClosest(true);
             npc.spriteDirection = npc.direction;
             Player player = Main.player[npc.target];
@@ -106,6 +107,12 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Smough.Smough
             {
                 npc.TargetClosest(false);
                 npc.active = false;
+            }
+
+            //Despawn
+            if (npc.active == false)
+            {
+                SoxarsModWorld.DownedSmough_2 = true;
             }
 
             //Super Form

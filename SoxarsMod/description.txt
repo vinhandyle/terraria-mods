@@ -1,1 +1,11 @@
-Soxar's Mod is a pretty cool mod, it does...this
+Soxar's Mod currently adds:
+
+* x new items
+* 1 new boss
+* 1 new Town NPC
+* 1 new soundtrack
+
+Coming soon:
+
+* Covenants - Level up to access new items and abilities
+* Boss Checklist support

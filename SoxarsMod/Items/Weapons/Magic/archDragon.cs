@@ -13,7 +13,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 
-namespace SoxarsMod.Items.Weapons
+namespace SoxarsMod.Items.Weapons.Magic
 {
 	public class archDragon : ModItem
 	{
@@ -34,7 +34,7 @@ namespace SoxarsMod.Items.Weapons
             item.width = 148; 
             item.height = 96; 
             item.rare = -11; 
-            item.value = 100; //
+            item.value = Item.sellPrice(0, 24, 0, 0); 
             item.shoot = mod.ProjectileType("trueFlame");
 
             item.melee = true;

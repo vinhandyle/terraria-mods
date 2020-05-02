@@ -21,6 +21,7 @@ namespace SoxarsMod.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Storm Ball");
+            Main.projFrames[projectile.type] = 5;
         }
 
         public override void SetDefaults()
@@ -43,7 +44,15 @@ namespace SoxarsMod.Projectiles
 
         public override void AI()
         {
-
+            //Loop through 5 animation frames, spending 4 ticks on each.
+            if (++projectile.frameCounter >= 4)
+            {
+                projectile.frameCounter = 0;
+                if (++projectile.frame >= 5)
+                {
+                    projectile.frame = 0;
+                }
+            }
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)

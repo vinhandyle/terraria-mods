@@ -30,7 +30,7 @@ namespace SoxarsMod.Items.Accessories.DevAccessory
             item.width = 28;
             item.height = 20;
             item.rare = -12;
-            item.value = 1000000;
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.accessory = true;
         }
 

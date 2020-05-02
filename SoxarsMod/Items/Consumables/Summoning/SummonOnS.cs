@@ -21,19 +21,19 @@ namespace SoxarsMod.Items.Consumables.Summoning
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bells of Awakening");
-            Tooltip.SetDefault("The tolling of bells alerts the protectors of \"Light\"");
+            Tooltip.SetDefault("The tolling of bells alerts the protectors of \"Light\" \nNot consumable");
         }
 
         public override void SetDefaults()
         {
             item.width = 48;
             item.height = 44;
-            item.maxStack = 999;
+            item.maxStack = 1;
             item.rare = 1;
             item.useAnimation = 45;
             item.useTime = 45;
             item.useStyle = 4;
-            item.consumable = true;
+            item.consumable = false;
 
         }
 
