@@ -34,7 +34,7 @@ namespace SoxarsMod.Items.Accessories.Tarot
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<SoxarsModPlayer>().tarot19Equipped = true;
+            SoxarsModPlayer.tarot19Equipped = true;
         }
 
         //public override void AddRecipes()

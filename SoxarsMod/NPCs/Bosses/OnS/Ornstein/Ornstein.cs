@@ -25,6 +25,7 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
         //Ai Slots
         private const int AI_State_Slot = 0;
         private const int AI_Timer_Slot = 1;
+        private const int AI_Super_Slot = 2;
 
         //Ai States
         private const int State_Follow = 0;
@@ -47,16 +48,21 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
             set => npc.ai[AI_Timer_Slot] = value;
         }
 
-
-        //Super form
-        private double superThreshold = 0.25;
-        private bool super = false;
+        public float AI_Super
+        {
+            get => npc.ai[AI_Super_Slot];
+            set => npc.ai[AI_Super_Slot] = value;
+        }
 
         public const string superOrnHead = "SoxarsMod/NPCs/Bosses/OnS/Ornstein/Ornstein_Head_Boss_Super";
 
         public override string Texture
         {
-            get { return "SoxarsMod/NPCs/Bosses/OnS/Ornstein/Ornstein"; }
+            get
+            {
+                //if (AI_Super > 0) { return "SoxarsMod/NPCs/Bosses/OnS/Smough/Smough"; }
+                return "SoxarsMod/NPCs/Bosses/OnS/Ornstein/Ornstein";
+            }
         }
 
         public override bool Autoload(ref string name)
@@ -96,7 +102,6 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
         { //+50% hp per additional player
             npc.lifeMax = (int)((int)(npc.lifeMax * 0.874f * bossLifeScale) * (1 + (0.5 * (double)numPlayers)));
             npc.damage = (int)(npc.damage * 0.5f);
-            superThreshold = 0.5;
         }
 
         public override void AI()
@@ -112,21 +117,24 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
             }
 
             //Despawn
-            if (npc.active == false)
+            if (!npc.active)
             {
-                SoxarsModWorld.DownedOrnstein_2 = true;
+                SoxarsModWorld.downedOrnstein_2 = true;
+                AI_Super = 0;
             }
 
             //Super Form
-            if (SoxarsModWorld.DownedSmough_2 == true)
+            if (SoxarsModWorld.downedSmough_2)
             {
-                super = true;
+                AI_Super++;
+                if (AI_Super > 10) { AI_Super = 2; }          
             }
 
-            if (super == true)
+            if (AI_Super == 1)
             {
+                npc.life = npc.lifeMax;
                 npc.damage = (int)(npc.damage * 1.408); 
-                npc.defense = (int)(npc.defense * 1.815); 
+                npc.defense = (int)(npc.defense * 1.815);
             }
 
             //Begin with charging attack(s)
@@ -151,7 +159,7 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
 
         public override void BossHeadSlot(ref int index)
         {
-            if (super == true)
+            if (AI_Super > 0)
             {
                 index = ModContent.GetModBossHeadSlot(superOrnHead);
             }
@@ -165,16 +173,20 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
 
         public override void NPCLoot()
         {
-            if (SoxarsModWorld.DownedSmough_2 == true)
+            if (SoxarsModWorld.downedSmough_2)
             { //Killed Ornstein last
                 SoxarsModWorld.OnS_Alive = false;
-                if (SoxarsModWorld.DownedOrnstein_1 == true)
+                if (SoxarsModWorld.downedOrnstein_1)
                 { //killed OnS 2+ times
 
                 }
+                if (!SoxarsModWorld.downedOnS)
+                {
+                    SoxarsModWorld.downedOnS = true;
+                }
             }
-            SoxarsModWorld.DownedOrnstein_1 = true;
-            SoxarsModWorld.DownedOrnstein_2 = true;
+            SoxarsModWorld.downedOrnstein_1 = true;
+            SoxarsModWorld.downedOrnstein_2 = true;
         }
     }
 }

@@ -29,8 +29,8 @@ namespace SoxarsMod.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<SoxarsModPlayer>().max_Speed = 50;
-            player.GetModPlayer<SoxarsModPlayer>().speed_Mult += 199f;
+            SoxarsModPlayer.max_Speed = 50;
+            SoxarsModPlayer.speed_Mult += 199f;
             if (player.FindBuffIndex(mod.BuffType("ContrastBuff")) > 0)
             {
                 if (player.name != "Soxar") //Change to == later

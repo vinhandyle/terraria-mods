@@ -56,7 +56,7 @@ namespace SoxarsMod.Items.Accessories.DevAccessory
                 //def
                 player.statDefense += 50;
                 //agi
-                player.GetModPlayer<SoxarsModPlayer>().trueProwessEquipped = true;
+                SoxarsModPlayer.trueProwessEquipped = true;
             }
             else
             {
@@ -77,7 +77,7 @@ namespace SoxarsMod.Items.Accessories.DevAccessory
                 //def
                 player.statDefense += 5;
                 //agi
-                player.GetModPlayer<SoxarsModPlayer>().prowessEquipped = true;
+                SoxarsModPlayer.prowessEquipped = true;
             }
         }
     }

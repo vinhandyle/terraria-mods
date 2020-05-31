@@ -22,7 +22,7 @@ namespace SoxarsMod.Items.Weapons.Ranged
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("School Sprayer");
-			Tooltip.SetDefault("Fires a dense mass of bullets \nThe gang's all here");
+			Tooltip.SetDefault("Fires a dense mass of bullets \nEveryone gangsta until...");
 		}
 		public override void SetDefaults()
 		{

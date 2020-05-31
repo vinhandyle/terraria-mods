@@ -20,25 +20,41 @@ namespace Terraria.ModLoader
 {
     public class SoxarsModPlayer : ModPlayer
     {
+        //Sin
+        public static int sin = 0;
+        public static int sinTier = 0;
+        public static int deathsToday = 0;
+
+        //Covenants
+        public static int dragonTier = 0;
+        public static int readingsToday = 0;
+        public static int occultTier = 0;
+
         //Speed
-        public int max_Speed = 25;
-        public float speed_Mult = 1f;
+        public static int max_Speed = 25;
+        public static float speed_Mult = 1f;
 
         //Tarot
-        public bool tarot13Equipped; //Death
-        public bool tarot19Equipped; //The Sun
-        public bool tarot21Equipped; //The World
-        public bool tarotCardsEquipped; //Major Arcana
+        public static bool tarot13Equipped = false; //Death
+        public static bool tarot19Equipped = false; //The Sun
+        public static bool tarot21Equipped = false; //The World
+        public static bool tarotCardsEquipped = false; //Major Arcana
 
         //Dev Bracelet
-        public bool prowessEquipped; 
-        public bool trueProwessEquipped;
+        public static bool prowessEquipped; 
+        public static bool trueProwessEquipped;
 
         int tarot21Heal = 0;
 
+        public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
+        {
+            deathsToday++;
+            if (sin > 4) { sin -= 5; } else { sin = 0; }        
+        }
+
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {
-            if (this.tarotCardsEquipped || this.tarot19Equipped)
+            if (tarotCardsEquipped || tarot19Equipped)
             {
                 if (Main.dayTime == true)
                 {
@@ -53,7 +69,7 @@ namespace Terraria.ModLoader
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
         {
-            if (this.tarotCardsEquipped || this.tarot19Equipped)
+            if (tarotCardsEquipped || tarot19Equipped)
             {
                 if (Main.dayTime == true)
                 {
@@ -73,7 +89,7 @@ namespace Terraria.ModLoader
 
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
-            if ((this.tarotCardsEquipped || this.tarot13Equipped) && player.FindBuffIndex(mod.BuffType("Death13")) < 0)
+            if ((tarotCardsEquipped || tarot13Equipped) && player.FindBuffIndex(mod.BuffType("Death13")) < 0)
             {
                 player.statLife = 100;
                 player.AddBuff(mod.BuffType("Death13"), 3600);
@@ -87,7 +103,7 @@ namespace Terraria.ModLoader
 
         public override void PreUpdateBuffs()
         {
-            if (this.tarotCardsEquipped || this.tarot21Equipped)
+            if (tarotCardsEquipped || tarot21Equipped)
             {
                 if (player.FindBuffIndex(88) >= 0 && tarot21Heal != 0)
                 {
@@ -105,6 +121,12 @@ namespace Terraria.ModLoader
             }
         }
 
+        public override void PostUpdate()
+        {
+            if (Main.time == 0) { deathsToday = 0; }
+            sin++;
+        }
+
         public override void PostUpdateEquips()
         {
             player.accRunSpeed += speed_Mult;
@@ -116,17 +138,12 @@ namespace Terraria.ModLoader
 
         public override void ResetEffects()
         {
-            this.tarot13Equipped = false; 
-            this.tarot19Equipped = false; 
-            this.tarot21Equipped = false;
-            this.tarotCardsEquipped = false;
+            tarot13Equipped = false; 
+            tarot19Equipped = false; 
+            tarot21Equipped = false;
+            tarotCardsEquipped = false;
 
             speed_Mult = 1f;
-        }
-
-        public void UpdatePlayer(int i)
-        {
-            
         }
     }
 }

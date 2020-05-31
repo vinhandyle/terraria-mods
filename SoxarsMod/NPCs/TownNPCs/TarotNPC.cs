@@ -20,6 +20,9 @@ namespace SoxarsMod.NPCs.TownNPCs
     [AutoloadHead]
     public class TarotNPC : ModNPC
     {
+        private int deathsBefore = 0;
+        private int deathsChecked = 0;
+
         public override string Texture
         {
             get { return "SoxarsMod/NPCs/TownNPCs/TarotNPC"; }
@@ -60,25 +63,32 @@ namespace SoxarsMod.NPCs.TownNPCs
         public override string GetChat()
         {
             Random rnd = new Random();
-            int rndChat = rnd.Next(3);
+            int rndChat = rnd.Next(4);
             string dialogue = "";
-            if (rndChat == 0)
+
+            if (Main.time == 0)
             {
-                dialogue = "Sometimes, things just don't work out.";
+                SoxarsModPlayer.readingsToday = 0;
             }
-            else if (rndChat == 1)
+
+            if (SoxarsModPlayer.readingsToday == 0) { deathsBefore = SoxarsModPlayer.deathsToday; } else { deathsBefore = SoxarsModPlayer.deathsToday - deathsChecked; }
+
+            if (deathsBefore == 0) { dialogue += " Welcome."; }
+            else if (deathsBefore <= 5) { dialogue += " Sometimes, things just don't work out."; }
+            else if (deathsBefore <= 10) { dialogue += " Are you having a bad day?"; }
+            else if (deathsBefore <= 15) { dialogue += " Might just be an unlucky day."; }
+            else { dialogue += " You've been having a streak of bad luck lately?"; }
+
+            if (SoxarsModPlayer.readingsToday == 0)
             {
-                dialogue = "Are you having a bad day?";
+                return dialogue + " Why don't you come for a reading? You can't change fate, but you can do something to soothe your doubts and worries. In fact, I'll do you for free.";
             }
-            else if (rndChat == 2)
-            {
-                dialogue = "Might just be an unlucky day.";
-            }
-            else if (rndChat == 3)
-            {
-                dialogue = "You've been having a streak of bad luck lately?";
-            }
-            return dialogue + " " + "Why don't you come for a reading? You can't change fate, but you can do something to soothe your doubts and worries. In fact, I'll do you for free.";
+
+            if (rndChat == 0) { return dialogue + " May I interest you in some of my wares?"; }
+            else if (rndChat == 1) { return dialogue + " "; }
+            else if (rndChat == 2) { return dialogue + " "; }
+            else if (rndChat == 3) { return dialogue + " "; }
+            else { return dialogue + " "; }
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
@@ -96,63 +106,96 @@ namespace SoxarsMod.NPCs.TownNPCs
             }
             else
             {
+                SoxarsModPlayer.readingsToday++;
+                deathsChecked += deathsBefore;
+                deathsBefore = 0;
+
                 Random rnd = new Random();
                 int rndChat = rnd.Next(9);
                 string dialogue = "";
-                if (rndChat == 0)
+
+                if (SoxarsModPlayer.readingsToday < 2)
                 {
-                    dialogue = "A thrilling time is in your immediate future.";
+                    if (rndChat == 0) //neutral
+                    {
+                        dialogue = " ";
+                    }
+                    else if (rndChat == 1) //neutral
+                    {
+                        dialogue = " "; 
+                    }
+                    else if (rndChat == 2) //good
+                    {
+                        dialogue = " "; 
+                    }
+                    else if (rndChat == 3) //good
+                    {
+                        dialogue = " ";
+                    }
+                    else if (rndChat == 4) //good
+                    {
+                        dialogue = " ";
+                    }
+                    else if (rndChat == 5) //good
+                    {
+                        dialogue = " ";
+                    }
+                    else if (rndChat == 6) //bad
+                    {
+                        dialogue = " ";
+                    }
+                    else if (rndChat == 7) //bad
+                    {
+                        dialogue = " ";
+                    }
+                    else if (rndChat == 8) //bad
+                    {
+                        dialogue = " ";
+                    }
+                    else if (rndChat == 9) //bad
+                    {
+                        dialogue = " ";
+                    }
                 }
-                else if (rndChat == 1)
+                else
                 {
-                    dialogue = "Your everlasting presence will be rewarded sooner or later.";
+                    dialogue = "I can only read your fortune once a day.";
                 }
-                else if (rndChat == 2)
-                {
-                    dialogue = "Something you lost will soon turn up.";
-                }
-                else if (rndChat == 3)
-                {
-                    dialogue = "A pleasant surprise is in store for you.";
-                }
-                else if (rndChat == 4)
-                {
-                    dialogue = "Be prepared to accept a wondrous opportunity in the days ahead!";
-                }
-                else if (rndChat == 5)
-                {
-                    dialogue = "Fame, riches and romance are yours for the asking.";
-                }
-                else if (rndChat == 6)
-                {
-                    dialogue = "Your life will be happy and peaceful.";
-                }
-                else if (rndChat == 7)
-                {
-                    dialogue = "Happy news is on its way to you.";
-                }
-                else if (rndChat == 8)
-                {
-                    dialogue = "Your past success will be overshadowed by your future success.";
-                }
-                else if (rndChat == 9)
-                {
-                    dialogue = "Any rough times are behind you.";
-                }
+                
                 Main.npcChatText = dialogue;
             }
         }
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            shop.item[nextSlot].SetDefaults(ItemID.CrystalBall);
-            nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("BlankCard"));
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("StratiArrow"));
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType(""));
             nextSlot++;
+        }
+
+        public override void TownNPCAttackStrength(ref int damage, ref float knockback)
+        {
+            damage = 20;
+            knockback = 4f;
+        }
+
+        public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
+        {
+            cooldown = 30;
+            randExtraCooldown = 30;
+        }
+
+        public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
+        {
+            //projType = ;
+            attackDelay = 1;
+        }
+
+        public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
+        {
+            multiplier = 12f;
+            randomOffset = 2f;
         }
     }
 }

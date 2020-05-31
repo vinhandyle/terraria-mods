@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent.Dyes;
 using Terraria.GameContent.UI;
 using Terraria.Graphics.Effects;
@@ -21,20 +22,21 @@ namespace SoxarsMod.Items.Ammo
 		{
 			DisplayName.SetDefault("Violent Storm");
 			Tooltip.SetDefault("A bundle of the world's strongest winds \nHow was such a thing created?");
-		}
-		public override void SetDefaults()
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 7));
+        }
+        public override void SetDefaults()
 		{
             item.damage = 106;
             item.ranged = true;
-            item.width = 14;
+            item.width = 34;
             item.height = 34;
-            item.maxStack = 999;
-            item.consumable = true;             //You need to set the item consumable so that the ammo would automatically consumed
+            item.maxStack = 1;
+            item.consumable = true;            
             item.knockBack = 2f;
-            item.value = 99000000;
+            item.value = Item.sellPrice(20, 0, 0, 0);
             item.rare = 11;
-            item.shoot = mod.ProjectileType("StratiProjectile1");   //The projectile shoot when your weapon using this ammo
-            item.shootSpeed = 30f;                  //The speed of the projectile
+            item.shoot = mod.ProjectileType("StratiProjectile1");   
+            item.shootSpeed = 30f;                  
             item.ammo = mod.ItemType("StratiArrow");
         }
     }

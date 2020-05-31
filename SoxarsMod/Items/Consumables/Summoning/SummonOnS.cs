@@ -44,14 +44,14 @@ namespace SoxarsMod.Items.Consumables.Summoning
 
         public override bool UseItem(Player player)
         {
-            if (SoxarsModWorld.OnS_Alive == false)
+            if (!SoxarsModWorld.OnS_Alive)
             {
                 SoxarsModWorld.OnS_Alive = true;
                 NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Dragonslayer Spear"));
                 NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Executioner's Hammer"));
                 Main.PlaySound(SoundID.Roar, player.position, 0);
-                SoxarsModWorld.DownedOrnstein_2 = false;
-                SoxarsModWorld.DownedSmough_2 = false;
+                SoxarsModWorld.downedOrnstein_2 = false;
+                SoxarsModWorld.downedSmough_2 = false;
             }
             else
             {

@@ -110,18 +110,18 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Smough.Smough
             }
 
             //Despawn
-            if (npc.active == false)
+            if (!npc.active)
             {
-                SoxarsModWorld.DownedSmough_2 = true;
+                SoxarsModWorld.downedSmough_2 = true;
             }
 
             //Super Form
-            if (SoxarsModWorld.DownedOrnstein_2 == true)
+            if (SoxarsModWorld.downedOrnstein_2)
             {
                 super = true;
             }
 
-            if (super == true)
+            if (super)
             {
                 npc.damage = (int)(npc.damage * 1.408); 
                 npc.defense = (int)(npc.defense * 1.815); 
@@ -142,7 +142,7 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Smough.Smough
 
         public override void BossHeadSlot(ref int index)
         {
-            if (super == true)
+            if (super)
             {
                 index = ModContent.GetModBossHeadSlot(superSmoHead);
             }
@@ -156,16 +156,20 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Smough.Smough
 
         public override void NPCLoot()
         {
-            if (SoxarsModWorld.DownedOrnstein_2 == true)
+            if (SoxarsModWorld.downedOrnstein_2)
             { //Killed Ornstein last
                 SoxarsModWorld.OnS_Alive = false;
-                if (SoxarsModWorld.DownedSmough_1 == true)
+                if (SoxarsModWorld.downedSmough_1)
                 { //killed OnS 2+ times
 
                 }
+                if (!SoxarsModWorld.downedOnS)
+                {
+                    SoxarsModWorld.downedOnS = true;
+                }
             }
-            SoxarsModWorld.DownedSmough_1 = true;
-            SoxarsModWorld.DownedSmough_2 = true;
+            SoxarsModWorld.downedSmough_1 = true;
+            SoxarsModWorld.downedSmough_2 = true;
         }
     }
 }

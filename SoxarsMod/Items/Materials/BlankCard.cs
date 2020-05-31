@@ -28,7 +28,7 @@ namespace SoxarsMod.Items.Materials
             item.width = 26;
             item.height = 38;
             item.rare = 1;
-            item.value = 500;
+            item.value = Item.sellPrice(0, 0, 5, 0);
             item.maxStack = 999;
         }
     }

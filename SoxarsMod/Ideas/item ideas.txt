@@ -1,0 +1,25 @@
+
+----Materials----
+[]Galvanizing Pigment: dropped from Super Ornstein, used to craft things related to lightning
+[]Avaricious Pigment: dropped from Super Smough, used to craft things related to hunger
+[]Paint for a World: crafted from all pigments, used to craft ?-tier
+
+----Weapons----
+
+--Classless--
+[x]Causality: 1 in a million from any enemy, scales per boss beaten, rare variant of the weakest vanilla weapon
+
+--Melee--
+[]Lance of Longinus: crafts from spear, crafts into Apoc, holy theme
+[]Demon Spear: dropped by Bone Serpents, crafts into Apoc, lifesteal
+
+--Ranged--
+
+--Magic--
+[]Paledrake: 3 tier dmg (covenant), crystal soul spears, soul stream -> summons crystals on tile hit, inflicts curse
+[]Darkeater: 3 tier dmg (covenant), summons homing dark spirits from below, dark laser -> explosions on tile hit, requires [x]s to charge
+
+--Summoner--
+
+----Accessories----
+[]Dragon Eye: 3 tier effects (covenant), stat bonus ->  overhead -> summon dragon on [key] press
