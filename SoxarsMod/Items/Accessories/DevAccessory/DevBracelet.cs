@@ -1,27 +1,25 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent.Dyes;
-using Terraria.GameContent.UI;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.UI;
 
 namespace SoxarsMod.Items.Accessories.DevAccessory
 {
     public class DevBracelet : ModItem
     {
+        public override bool CloneNewInstances => true; // For dynamic tooltip
+        private string statSummary;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Prowess");
-            Tooltip.SetDefault("Cursed \nThe dull sharpen, the sharp break");
+            Tooltip.SetDefault(
+                "Increases defense, max life, and max mana x10\n" +
+                "Life and mana regen are dynamically increased and always enabled\n" +
+                "Equip in lower slot for higher efficacy\n"
+                );
+
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 14));
         }
 
@@ -30,55 +28,47 @@ namespace SoxarsMod.Items.Accessories.DevAccessory
             item.width = 28;
             item.height = 20;
             item.rare = -12;
+            item.defense = 10;
             item.value = Item.sellPrice(1, 0, 0, 0);
             item.accessory = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.name != "Soxar")
-            {
-                //buff or nerf idk
-                //str
-                player.magicDamage += 0.5f;
-                player.meleeDamage += 0.5f;
-                player.minionDamage += 0.5f;
-                player.rangedDamage += 0.5f;
-                player.thrownDamage += 0.5f;
-                //dex
-                player.magicCrit += 50;
-                player.meleeCrit += 50;
-                player.rangedCrit += 50;
-                player.thrownCrit += 50;
-                //int
-                player.maxMinions += 50;
-                player.manaCost -= 0.5f;
-                //def
-                player.statDefense += 50;
-                //agi
-                SoxarsModPlayer.trueProwessEquipped = true;
-            }
-            else
-            {
-                //str
-                player.magicDamage += 0.05f;
-                player.meleeDamage += 0.05f;
-                player.minionDamage += 0.05f;
-                player.rangedDamage += 0.05f;
-                player.thrownDamage += 0.05f;
-                //dex
-                player.magicCrit += 5;
-                player.meleeCrit += 5;
-                player.rangedCrit += 5;
-                player.thrownCrit += 5;
-                //int
-                player.maxMinions += 5;
-                player.manaCost -= 0.05f;
-                //def
-                player.statDefense += 5;
-                //agi
-                SoxarsModPlayer.prowessEquipped = true;
-            }
+            player.statDefense *= 10;
+            player.statLifeMax2 *= 10;
+            player.statManaMax2 *= 10;
+
+            player.lifeRegen += (int)(player.statLifeMax2 * 0.5);
+            if (player.lifeRegenTime <= 1)
+                player.statLife += player.lifeRegen / 120; // "Regen" while regen is disabled
+
+            player.manaRegenBonus += (int)(player.statManaMax2 * 1.5);
+            player.manaRegenDelay *= 0; // Regen while attacking
+
+            statSummary = "-------------------\n" +
+                         "Current base stats:\n" +
+                         "Bonus life: " + (player.statLifeMax2 - player.statLifeMax) + "\n" +
+                         "Bonus mana: " + (player.statManaMax2 - player.statManaMax) + "\n" +
+                         "Life regen: " + player.lifeRegen + "\n" +
+                         "Mana regen: " + player.manaRegen + "\n";
+            player.AddBuff(mod.BuffType("DevBuff"), 2);
+        }
+
+        public override void UpdateInventory(Player player)
+        {
+            item.accessory = !Main.player[item.owner].HasBuff(mod.BuffType("DevBuff"));
+            statSummary = "";
+        }
+        
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            var statTooltip = new TooltipLine(
+                mod,
+                Name,
+                Main.player[item.owner].HasBuff(mod.BuffType("DevBuff")) ? statSummary : ""
+                );
+            tooltips.Add(statTooltip);
         }
     }
 }

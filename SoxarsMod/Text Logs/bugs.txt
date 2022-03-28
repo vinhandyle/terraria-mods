@@ -1,0 +1,2 @@
+1. If a dev accessory is equipped, looking at a dev accessory in recipe browser, cheat sheet, etc.
+	will cause the game to crash

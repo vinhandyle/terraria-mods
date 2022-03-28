@@ -1,5 +1,0 @@
-<June>
-[]Fix O&S's super form activation
-[]Figure out how to update tooltips in real time (no relog necessary)
-[]Finish Dragon Eye item effects
-[]Update Fortuneteller NPC

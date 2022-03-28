@@ -1,21 +1,6 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Terraria;
-using Terraria.GameContent.Dyes;
-using Terraria.GameContent.Events;
-using Terraria.GameContent.UI;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
-using Terraria.UI;
-using Terraria.Utilities;
 
 namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
 {
@@ -80,7 +65,7 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
 
         public override void SetDefaults()
         {
-            npc.aiStyle = -1; 
+            npc.aiStyle = -1;
             npc.width = 244;
             npc.height = 42;
             npc.damage = 142; //base 142
@@ -127,13 +112,13 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
             if (SoxarsModWorld.downedSmough_2)
             {
                 AI_Super++;
-                if (AI_Super > 10) { AI_Super = 2; }          
+                if (AI_Super > 10) { AI_Super = 2; }
             }
 
             if (AI_Super == 1)
             {
                 npc.life = npc.lifeMax;
-                npc.damage = (int)(npc.damage * 1.408); 
+                npc.damage = (int)(npc.damage * 1.408);
                 npc.defense = (int)(npc.defense * 1.815);
             }
 
@@ -167,7 +152,7 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Ornstein.Ornstein
 
         public virtual void FindFrame(int frameHeight)
         {
-            
+
         }
 
 

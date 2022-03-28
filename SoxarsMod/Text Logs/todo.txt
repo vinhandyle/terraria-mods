@@ -1,0 +1,62 @@
+--Version 1.0--
+Step 1 (Mar-Apr 2022):
+-[o]- Developer Accessories
+	-[X]- Intensity
+	-[X]- Prowess
+	-[X]- Contrast
+	-[/]- Ultimate accessory
+-[o]- Code Refactor
+
+Step 2:
+-[o]- Developer Weapons
+	-[/]- T4: Apocalypse/Guardian (Spear + Halbred)
+	-[/]- T4: Stratiformis (Bow)
+	-[o]- T4: Pure/Lament (Staff)
+	-[o]- T4: Aftershock/Toxoplasmosis (Sentry + Poison Swarm?)
+	-[o]- T4: Cataclysm (Calamity Rogue)
+
+Step 3:
+-[o]- Dragon Weapons
+	-[/]- Archdragon
+	-[]- ? (Khalameet + Sinh)
+	-[o]- Paledrake
+	-[o]- Darkeater
+	-[o]- Hairui/Kaimon
+
+--Version 1.1--
+Step 1:
+-[o]- Tiered Weapons
+	-[o]- Melee 
+		-[X]- T1: Spear
+		-[o]- T2
+		-[o]- T3
+		-[o]- T4
+	-[o]- Ranged
+		-[X]- T1: Flare Gun
+		-[o]- T2
+		-[o]- T3
+		-[o]- T4
+	-[o]- Magic 
+		-[X]- T1: Wand of Sparking
+		-[o]- T2
+		-[o]- T3
+		-[o]- T4
+	-[o]- Summoner
+		-[X]- T1: Slime Staff
+		-[o]- T2
+		-[o]- T3
+		-[o]- T4
+	-[o]- Thrown 
+		-[X]- T1: Boomerang
+		-[o]- T2
+		-[o]- T3
+		-[o]- T4
+
+Step 2:
+-[o]- Pre-Hardmode Boss
+
+Step 3:
+-[o]- Hardmode Boss
+
+Step 4:
+-[o]- Post-Moonlord Boss

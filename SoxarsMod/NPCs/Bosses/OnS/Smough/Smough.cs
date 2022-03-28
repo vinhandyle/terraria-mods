@@ -1,21 +1,6 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Terraria;
-using Terraria.GameContent.Dyes;
-using Terraria.GameContent.Events;
-using Terraria.GameContent.UI;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
-using Terraria.UI;
-using Terraria.Utilities;
 
 namespace SoxarsMod.NPCs.Bosses.OnS.Smough.Smough
 {
@@ -72,7 +57,7 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Smough.Smough
 
         public override void SetDefaults()
         {
-            npc.aiStyle = -1; 
+            npc.aiStyle = -1;
             npc.width = 142;
             npc.height = 88;
             npc.damage = 450; //base 450
@@ -123,8 +108,8 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Smough.Smough
 
             if (super)
             {
-                npc.damage = (int)(npc.damage * 1.408); 
-                npc.defense = (int)(npc.defense * 1.815); 
+                npc.damage = (int)(npc.damage * 1.408);
+                npc.defense = (int)(npc.defense * 1.815);
             }
 
             //Begin with charging attack(s)
@@ -150,7 +135,7 @@ namespace SoxarsMod.NPCs.Bosses.OnS.Smough.Smough
 
         public virtual void FindFrame(int frameHeight)
         {
-            
+
         }
 
 

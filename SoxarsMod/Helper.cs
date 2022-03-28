@@ -1,19 +1,7 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
 using Terraria;
-using Terraria.GameContent.Dyes;
-using Terraria.GameContent.UI;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.UI;
 
 namespace SoxarsMod
 {
@@ -21,7 +9,7 @@ namespace SoxarsMod
 
     public static class Helper
     {
-        //#region Spawn helpers
+        #region Spawn helpers
         public static void MoveTowards(this NPC npc, Vector2 playerTarget, float speed, float turnResistance)
         {
             var Move = playerTarget - npc.Center;
@@ -50,4 +38,5 @@ namespace SoxarsMod
             return Move * (Speed / (float)Math.Sqrt(Move.X * Move.X + Move.Y * Move.Y));
         }
     }
+    #endregion
 }

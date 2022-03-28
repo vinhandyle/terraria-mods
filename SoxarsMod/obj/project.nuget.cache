@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "flxjz89mDcdSpE6L0jWfm+Z0wydNKhTKIY8r0h+cPoBs6WhLOgsJr4eKppS1tBI4+AfX1oDw2IJwTWywRL3NoQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vinha\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\SoxarsMod\\SoxarsMod.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vinha\\.nuget\\packages\\tmodloader.codeassist\\0.1.3\\tmodloader.codeassist.0.1.3.nupkg.sha512"
+  ],
+  "logs": []
+}

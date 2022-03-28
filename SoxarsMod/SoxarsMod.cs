@@ -1,18 +1,7 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+using MonoMod.Cil;
 using Terraria;
-using Terraria.GameContent.Dyes;
-using Terraria.GameContent.UI;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.UI;
 
 namespace SoxarsMod
 {
@@ -28,6 +17,24 @@ namespace SoxarsMod
                 AutoloadBackgrounds = true
             };
         }
+
+        public override void Load()
+        {
+            IL.Terraria.Player.Update += Player_Update;
+        }
+
+        public override void Unload()
+        {
+
+        }
+
+        public override void UpdateMusic(ref int music, ref MusicPriority priority)
+        {
+            if (Main.myPlayer != -1 && !Main.gameMenu && Main.LocalPlayer.active)
+            {
+                
+            }
+        }       
 
         public override void AddRecipeGroups()
         {
@@ -53,17 +60,23 @@ namespace SoxarsMod
             RecipeGroup.RegisterGroup("SoxarsMod:hardmodeBar3", hardmodeBar3);
         }
 
-        public override void Unload()
+        #region Uncap Max Mana
+        private void Player_Update(ILContext il)
         {
+            ILCursor cursor = new ILCursor(il);
 
-        }
-
-        public override void UpdateMusic(ref int music, ref MusicPriority priority)
-        {
-            if (Main.myPlayer != -1 && !Main.gameMenu && Main.LocalPlayer.active)
+            if (!cursor.TryGotoNext(MoveType.Before,
+                                    i => i.MatchLdfld("Terraria.Player", "statManaMax2"),
+                                    i => i.MatchLdcI4(400)))
             {
-                
+                Logger.Fatal("Could not find instruction to patch");
+                return;
             }
+
+            cursor.Next.Next.Operand = int.MaxValue;
         }
+
+        #endregion
+
     }
 }

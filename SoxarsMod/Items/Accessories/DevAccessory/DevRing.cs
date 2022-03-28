@@ -1,27 +1,22 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent.Dyes;
-using Terraria.GameContent.UI;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.UI;
 
 namespace SoxarsMod.Items.Accessories.DevAccessory
 {
     public class DevRing : ModItem
     {
+        public override bool CloneNewInstances => true; // For dynamic tooltip
+        private string statSummary;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Intensity");
-            Tooltip.SetDefault("Mysterious \nA bottomless well, what will you find?");
+            Tooltip.SetDefault(
+                "Increases all damage x10\n" + 
+                "Equip in lower slot for higher efficacy\n"
+                );
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 14));
         }
 
@@ -36,22 +31,38 @@ namespace SoxarsMod.Items.Accessories.DevAccessory
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.name != "Soxar")
-            {
-                player.magicDamage += 9f;
-                player.meleeDamage += 9f;
-                player.minionDamage += 9f;
-                player.rangedDamage += 9f;
-                player.thrownDamage += 9f;
-            }
-            else
-            {
-                player.magicDamage -= 0.9f;
-                player.meleeDamage -= 0.9f;
-                player.minionDamage -= 0.9f;
-                player.rangedDamage -= 0.9f;
-                player.thrownDamage -= 0.9f;
-            }
+            player.allDamage *= 10;
+            player.meleeDamage *= 10;
+            player.rangedDamage *= 10;
+            player.magicDamage *= 10;
+            player.minionDamage *= 10;
+            player.thrownDamage *= 10;
+
+            statSummary = "-------------------\n" +
+                         "Current damage multipliers:\n" +
+                         "All: x" + player.allDamage + "\n" +
+                         "Melee: x" + player.meleeDamage + "\n" +
+                         "Ranged: x" + player.rangedDamage + "\n" +
+                         "Magic: x" + player.magicDamage + "\n" +
+                         "Summon: x" + player.minionDamage + "\n" +
+                         "Thrown: x" + player.thrownDamage + "\n";
+            player.AddBuff(mod.BuffType("DevBuff"), 2);
+        }
+
+        public override void UpdateInventory(Player player)
+        {
+            item.accessory = !Main.player[item.owner].HasBuff(mod.BuffType("DevBuff"));
+            statSummary = "";
+        }
+     
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            var statTooltip = new TooltipLine(
+                mod,
+                Name,
+                Main.player[item.owner].HasBuff(mod.BuffType("DevBuff")) ? statSummary : ""
+                );
+            tooltips.Add(statTooltip);
         }
     }
 }

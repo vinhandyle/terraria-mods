@@ -1,19 +1,8 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Terraria;
-using Terraria.GameContent.Dyes;
-using Terraria.GameContent.UI;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.UI;
-using Terraria.Utilities;
+
 
 namespace SoxarsMod.NPCs.TownNPCs
 {
@@ -60,7 +49,7 @@ namespace SoxarsMod.NPCs.TownNPCs
             return true;
         }
 
-        public override string GetChat()
+        /*public override string GetChat()
         {
             Random rnd = new Random();
             int rndChat = rnd.Next(4);
@@ -122,11 +111,11 @@ namespace SoxarsMod.NPCs.TownNPCs
                     }
                     else if (rndChat == 1) //neutral
                     {
-                        dialogue = " "; 
+                        dialogue = " ";
                     }
                     else if (rndChat == 2) //good
                     {
-                        dialogue = " "; 
+                        dialogue = " ";
                     }
                     else if (rndChat == 3) //good
                     {
@@ -161,10 +150,10 @@ namespace SoxarsMod.NPCs.TownNPCs
                 {
                     dialogue = "I can only read your fortune once a day.";
                 }
-                
+
                 Main.npcChatText = dialogue;
             }
-        }
+        }*/
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
